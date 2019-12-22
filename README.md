@@ -9,7 +9,7 @@ If the searchTerm's result is already in the database, these records are deleted
 
 On the DbSearch page you can search info from the database. This search is also implemented by Search Term.
 
-Client was imlemented for each search's service to send requests and get responoses.
+Client was imlemented for each search's service to send requests and get responses.
 Each client imlements ISearchClient interface.
 
 To start search from Google, Yandex and Bing services you need to set up config file ```appsettings.json```.
