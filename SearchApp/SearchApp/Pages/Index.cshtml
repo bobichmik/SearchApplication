@@ -1,0 +1,32 @@
+﻿@page
+@model SearchApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Search from clients";
+}
+<h1>@ViewData["Title"]</h1>
+<h2>@Model.Message</h2>
+<form method="post">
+    <input type="text" name="searchTerm" id="searchTerm" />
+    <input type="submit" value="Search">
+    @Html.AntiForgeryToken();
+</form>
+@if (Model.DisplayedResults != null)
+{
+    if (Model.DisplayedResults.Count != 0)
+    {
+        <table class="table">
+            <tr><td>Title</td><td>Url</td></tr>
+            @foreach (var result in Model.DisplayedResults)
+            {
+                <tr>
+                    <td>@result.Title</td>
+                    <td>@result.Url</td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <h3>No results</h3>
+    }
+}
