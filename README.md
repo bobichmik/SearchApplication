@@ -1,38 +1,38 @@
 # SearchApplication
-Web-приложение было реализовано с помощью Razor pages. Для работы с базой данных использовался Entity Framework. 
-Для создания БД и ее объектов использовался подход Code First.
+Web-Application was implemented with Razor pages. Entity Framework was used to work with the database. 
+Code First principle was used to create the database and its elements.
 
-Страница Index отвечает за поиск через сервисы Google, Yandex и Bing.
-Поиск ведется по Search Term.
-Результат, который приходит первый, выводится на страницу и записывается бд. 
-Если результат по данному Search Term уже есть в базе, записи с данным Search Term удаляются, и вместо них записываются новые результаты.
+On the Index page you can search info by Google's, Yandex's and Bing's services.
+The search is implemented by Search Term.
+The response, which comes first, is displayed on the web page and recorded in the database.
+If the searchTerm's result is already in the database, these records are deleted and the new results are saved in database.
 
-Страница DbSearch отвечает за поиск в БД.
-Поиск также ведется по Search Term.
+On the DbSearch page you can search info from the database. This search is also implemented by Search Term.
 
-Для каждого сервиса был реализован свой клиент для отправки поисковых запросов и получения результатов.
-Каждый клиент реализует интерфейс ISearchClient.
+Client was imlemented For each search's service to send requests and get responoses.
+Each client imlements ISearchClient interface.
 
-Чтобы поиск заработал, нужно прописать значения в конфиг appsettings.json.
-В поле ```"DefaultConnection": ""``` нужно вставить строку подключения к базе данных.
+To start search from Google, Yandex and Bind services you need to set up config file ```appsettings.json```.
+You need to enter ConnectionString in ```"DefaultConnection": ""``` field.
 
-В секции Google нужно указать Url и креды для поиска. Для тестирования были использованы следующие параметры: 
+In the Google section, you need to specify Url and credentials for search. The following parameters were used for testing: 
 ```
     "Url": "https://www.googleapis.com/customsearch/v1",
     "Key": "AIzaSyAtmSONG1rljrEgsvcus8gUYmfy5YcWARc",
     "CustomSearchEngineId": "016090189203945702627:n0vlgirvzxf"
 ```
 
-В секции Bing нужно указать Url и креды для поиска. Для тестирования были использованы следующие параметры: 
+In the Bing section, you need to specify Url and credentials for search. The following parameters were used for testing:
 ```
     "Url": "https://api.cognitive.microsoft.com/bing/v7.0/search",
     "Key": "e3a9a702151b4e90a8e3f8d6ba20e00b"
 ```
-    
-В секции Yandex нужно указать Url и креды для поиска. Для тестирования были использованы следующие параметры: 
+  
+In the Yandex section, you need to specify Url and credentials for search. The following parameters were used for testing:
 ```
     "Url": "http://xmlproxy.ru/search/xml",
     "Key": "ifyouneedmorejustpay",
     "User": "test@megaindex.ru"
 ```
-В случае с Yandex использовался стороний сервис для поиска, который предоставлял доступ к сервису Яндекс.XML, так как при генерации ключей для Яндекс.XML у нового пользователя Яндекс выставлял максимально количество запросов для поиска в сутки = 0.
+In the case of Yandex service search, we used Xmlproxy service for testing our search. It can provide access to Yandex.XML. 
+We used thisy service for tests because after generation key for Yandex.XML service there were some limits of maximum requests per day. The numbers of requests per day were 0.
