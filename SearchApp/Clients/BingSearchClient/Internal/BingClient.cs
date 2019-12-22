@@ -54,7 +54,7 @@ namespace BingSearchClient.Internal
             }
             catch (Exception ex)
             {
-                var exMessage = $"Getting search results from Google client failed for {searchTerm}";
+                var exMessage = $"Getting search results from Bing client failed for {searchTerm}";
                 _logger.LogError(ex, exMessage);
                 throw new InvalidOperationException(exMessage, ex);
             }

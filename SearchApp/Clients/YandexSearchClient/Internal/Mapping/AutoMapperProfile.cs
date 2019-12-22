@@ -1,7 +1,6 @@
-﻿using System;
-using System.Xml;
-using AutoMapper;
+﻿using AutoMapper;
 using Domain.Core.Models;
+using System.Xml;
 using YandexSearchClient.Internal.Models;
 
 namespace YandexSearchClient.Internal.Mapping
@@ -9,7 +8,7 @@ namespace YandexSearchClient.Internal.Mapping
     /// <summary>
     /// Profile for map yandex response model and core model
     /// </summary>
-    internal class AutoMapperProfile : Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {

@@ -7,7 +7,7 @@ namespace GoogleSearchClient.Internal.Mapping
     /// <summary>
     /// Profile for map Google response model and core model
     /// </summary>
-    internal class AutoMapperProfile : Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {

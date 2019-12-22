@@ -7,7 +7,7 @@ namespace BingSearchClient.Internal.Mapping
     /// <summary>
     /// Profile for map Bing response model and core model
     /// </summary>
-    internal class AutoMapperProfile : Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
