@@ -1,11 +1,10 @@
-using Core = Domain.Core.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SearchApp.Models;
 using SearcherApp.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoMapper;
 
 namespace SearchApp.Pages
 {
