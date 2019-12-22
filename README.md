@@ -13,7 +13,7 @@ Client was imlemented for each search's service to send requests and get respons
 Each client imlements ISearchClient interface.
 
 To start search from Google, Yandex and Bing services you need to set up config file ```appsettings.json```.
-You need to enter ConnectionString in ```"DefaultConnection": ""``` field.
+You need to set ConnectionString in ```"DefaultConnection": ""``` field.
 
 In the Google section, you need to specify Url and credentials for search. The following parameters were used for testing: 
 ```
