@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Domain.Core.Models
 {
@@ -17,14 +18,14 @@ namespace Domain.Core.Models
         /// Save results to DB
         /// </summary>
         /// <param name="results"></param>
-        public void SaveResults(List<SearchResultModel> results)
+        public async Task SaveResultsAsync(List<SearchResultModel> results)
         {
             var modelsToRemove = SearchResults.Where(x => x.SearchTerm == results.FirstOrDefault().SearchTerm);
             
             if (modelsToRemove.Any())
                 SearchResults.RemoveRange(modelsToRemove);
             SearchResults.AddRange(results);
-            this.SaveChangesAsync();
+            await this.SaveChangesAsync();
         }
 
         /// <summary>

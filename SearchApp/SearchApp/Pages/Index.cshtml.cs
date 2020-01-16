@@ -38,7 +38,7 @@ namespace SearchApp.Pages
 
             Message = $"Search term = {searchTerm}";
             DisplayedResults = await result;
-            _context.SaveResults(DisplayedResults);
+            await _context.SaveResultsAsync(DisplayedResults);
         }
     }
 }
