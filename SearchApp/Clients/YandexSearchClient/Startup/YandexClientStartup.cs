@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Domain.Core.Searching;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SearcherApp.Interfaces;
 using YandexSearchClient.Internal;
 using YandexSearchClient.Internal.Mapping;
 

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SearchApp.Interfaces\SearchApp.Interfaces.csproj" />
+    <ProjectReference Include="..\..\Domain.Core\Domain.Core.csproj" />
   </ItemGroup>
 
 </Project>

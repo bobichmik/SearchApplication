@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
+using Domain.Core.Searching;
 using GoogleSearchClient.Internal;
 using GoogleSearchClient.Internal.Mapping;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SearcherApp.Interfaces;
 
 namespace GoogleSearchClient.Startup
 {

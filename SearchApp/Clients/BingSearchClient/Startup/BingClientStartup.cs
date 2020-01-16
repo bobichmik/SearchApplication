@@ -3,7 +3,7 @@ using BingSearchClient.Internal.Mapping;
 using BingSearchClient.Internal;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SearcherApp.Interfaces;
+using Domain.Core.Searching;
 
 namespace BingSearchClient.Startup
 {
