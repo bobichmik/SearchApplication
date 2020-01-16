@@ -4,11 +4,11 @@ using Flurl;
 using BingSearchClient.Internal.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using SearcherApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Domain.Core.Searching;
 
 namespace BingSearchClient.Internal
 {
@@ -32,7 +32,7 @@ namespace BingSearchClient.Internal
             _httpClient.DefaultRequestHeaders.TryAddWithoutValidation("Ocp-Apim-Subscription-Key", _settings.Key);
         }
 
-        public async Task<List<ResponseModel>> GetSearchInfoAsync(string searchTerm)
+        public async Task<List<SearchResultModel>> GetSearchInfoAsync(string searchTerm)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace BingSearchClient.Internal
                     var jsonData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var responseData = JsonConvert.DeserializeObject<BingResponseModel>(jsonData);
 
-                    var modelsToReturn = _mapper.Map<List<ResponseModel>>(responseData.WebPages.Value);
+                    var modelsToReturn = _mapper.Map<List<SearchResultModel>>(responseData.WebPages.Value);
                     foreach (var model in modelsToReturn)
                     {
                         model.SearchTerm = searchTerm;

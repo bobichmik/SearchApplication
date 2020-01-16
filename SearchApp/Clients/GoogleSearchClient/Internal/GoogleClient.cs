@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Domain.Core.Models;
+using Domain.Core.Searching;
 using Flurl;
 using GoogleSearchClient.Internal.Models;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using SearcherApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -30,7 +30,7 @@ namespace GoogleSearchClient.Internal
             _logger = logger;
         }
 
-        public async Task<List<ResponseModel>> GetSearchInfoAsync(string searchQuery)
+        public async Task<List<SearchResultModel>> GetSearchInfoAsync(string searchQuery)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace GoogleSearchClient.Internal
                     var jsonData = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     var responseData = JsonConvert.DeserializeObject<GoogleResponseModel>(jsonData);
                     
-                    var modelsToReturn = _mapper.Map<List<ResponseModel>>(responseData.Items);
+                    var modelsToReturn = _mapper.Map<List<SearchResultModel>>(responseData.Items);
                     foreach (var model in modelsToReturn)
                     {
                         model.SearchTerm = searchQuery;

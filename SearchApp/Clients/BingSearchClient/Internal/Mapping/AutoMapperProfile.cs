@@ -11,7 +11,7 @@ namespace BingSearchClient.Internal.Mapping
     {
         public AutoMapperProfile()
         {
-            CreateMap<Value, ResponseModel>()
+            CreateMap<Value, SearchResultModel>()
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Name))
                 .ForMember(dest => dest.Url, opt => opt.MapFrom(source => source.Url));
         }

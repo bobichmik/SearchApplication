@@ -12,7 +12,7 @@ namespace YandexSearchClient.Internal.Mapping
     {
         public AutoMapperProfile()
         {
-            CreateMap<Group, ResponseModel>()
+            CreateMap<Group, SearchResultModel>()
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(source => CreateName(source.Doc.Title)))
                 .ForMember(dest => dest.Url, opt => opt.MapFrom(source => source.Doc.Url));
         }

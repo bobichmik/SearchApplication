@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Domain.Core.Models;
+using Domain.Core.Searching;
 using Flurl;
 using Microsoft.Extensions.Logging;
-using SearcherApp.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -30,7 +30,7 @@ namespace YandexSearchClient.Internal
             _logger = logger;
         }
 
-        public async Task<List<ResponseModel>> GetSearchInfoAsync(string searchTerm)
+        public async Task<List<SearchResultModel>> GetSearchInfoAsync(string searchTerm)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace YandexSearchClient.Internal
                     var serializer = new XmlSerializer(typeof(YandexResponseModel));
                     var responseData = (YandexResponseModel)serializer.Deserialize(streamData);
 
-                    var modelsToReturn = _mapper.Map<List<ResponseModel>>(responseData.Response.Results.Grouping.Group);
+                    var modelsToReturn = _mapper.Map<List<SearchResultModel>>(responseData.Response.Results.Grouping.Group);
                     foreach (var model in modelsToReturn)
                     {
                         model.SearchTerm = searchTerm;

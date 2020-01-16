@@ -1,9 +1,9 @@
-﻿namespace SearchApp.Models
+﻿namespace Domain.Core.Models
 {
     /// <summary>
-    /// Data Base result model
+    /// Search Result Model
     /// </summary>
-    public class ResultModel
+    public class SearchResultModel
     {
         /// <summary>
         /// Model identifier
@@ -11,17 +11,17 @@
         public int Id { get; set; }
 
         /// <summary>
-        /// Model's Search term
+        /// Search Term for model
         /// </summary>
         public string SearchTerm { get; set; }
 
         /// <summary>
-        /// Model's Title
+        /// Title of model
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Model's Url
+        /// Url of model
         /// </summary>
         public string Url { get; set; }
     }

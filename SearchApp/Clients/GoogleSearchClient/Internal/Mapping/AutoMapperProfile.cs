@@ -11,7 +11,7 @@ namespace GoogleSearchClient.Internal.Mapping
     {
         public AutoMapperProfile()
         {
-            CreateMap<Item, ResponseModel>()
+            CreateMap<Item, SearchResultModel>()
                 .ForMember(dest => dest.Title, opt => opt.MapFrom(source => source.Title))
                 .ForMember(dest => dest.Url, opt => opt.MapFrom(source => source.Link));
         }
