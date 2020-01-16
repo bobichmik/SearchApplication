@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SearchApp.Models
+namespace Domain.Core.Models
 {
-    /// <summary>
-    /// Application context for Data base
-    /// </summary>
     public class ApplicationContext : DbContext
     {
-        public DbSet<ResultModel> SearchResults { get; set; }
+        public DbSet<SearchResultModel> SearchResults { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            Database.EnsureCreated();
+            this.Database.Migrate();
         }
 
         /// <summary>
         /// Save results to DB
         /// </summary>
         /// <param name="results"></param>
-        public void SaveResults(List<ResultModel> results)
+        public void SaveResults(List<SearchResultModel> results)
         {
             var modelsToRemove = SearchResults.Where(x => x.SearchTerm == results.FirstOrDefault().SearchTerm);
-            SearchResults.RemoveRange(modelsToRemove);
+            
+            if (modelsToRemove.Any())
+                SearchResults.RemoveRange(modelsToRemove);
             SearchResults.AddRange(results);
             this.SaveChangesAsync();
         }
@@ -33,7 +32,7 @@ namespace SearchApp.Models
         /// </summary>
         /// <param name="searchTerm"></param>
         /// <returns></returns>
-        public List<ResultModel> ShowResults(string searchTerm)
+        public List<SearchResultModel> ShowResults(string searchTerm)
         {
             return SearchResults.Where(x => x.SearchTerm == searchTerm).ToList();
         }
