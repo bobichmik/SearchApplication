@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using BingSearchClient.Startup;
+using Domain.Core.Models;
 using GoogleSearchClient.Startup;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SearchApp.Mapping;
-using SearchApp.Models;
 using YandexSearchClient.Startup;
 
 namespace SearchApp
@@ -57,7 +56,6 @@ namespace SearchApp
                             })
                         .CreateMapper(sp.GetService);
                 });
-            services.AddSingleton<Profile, MappingProfile>();
         }
     }
 }

@@ -1,7 +1,7 @@
 using AutoMapper;
+using Domain.Core.Models;
+using Domain.Core.Searching;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using SearchApp.Models;
-using SearcherApp.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +12,7 @@ namespace SearchApp.Pages
     {
         public string Message { get; set; }
 
-        public List<ResultModel> DisplayedResults { get; set; }
+        public List<SearchResultModel> DisplayedResults { get; set; }
 
         private readonly IEnumerable<ISearchClient> _searchClients;
         private readonly IMapper _mapper;
@@ -37,7 +37,7 @@ namespace SearchApp.Pages
             var result = await Task.WhenAny(tasks);
 
             Message = $"Search term = {searchTerm}";
-            DisplayedResults = _mapper.Map<List<ResultModel>>(await result);
+            DisplayedResults = await result;
             _context.SaveResults(DisplayedResults);
         }
     }

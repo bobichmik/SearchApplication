@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using SearchApp.Models;
+﻿using Domain.Core.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 
 namespace SearchApp.Pages
@@ -8,7 +8,7 @@ namespace SearchApp.Pages
     {
         public string Message { get; set; }
 
-        public List<ResultModel> DisplayedResults { get; set; }
+        public List<SearchResultModel> DisplayedResults { get; set; }
 
         private readonly ApplicationContext _context;
 
