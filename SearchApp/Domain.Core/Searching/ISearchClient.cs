@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SearcherApp.Interfaces
+namespace Domain.Core.Searching
 {
     /// <summary>
     /// Interface of search client
@@ -14,6 +14,6 @@ namespace SearcherApp.Interfaces
         /// </summary>
         /// <param name="searchTerm">Search term</param>
         /// <returns></returns>
-        Task<List<ResponseModel>> GetSearchInfoAsync(string searchTerm);
+        Task<List<SearchResultModel>> GetSearchInfoAsync(string searchTerm);
     }
 }
