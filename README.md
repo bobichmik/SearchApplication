@@ -13,7 +13,7 @@ Client was imlemented for each search's service to send requests and get respons
 Each client imlements ISearchClient interface.
 
 To start search from Google, Yandex and Bing services you need to set up config file ```appsettings.json```.
-You need to set ConnectionString in ```"DefaultConnection": ""``` field.
+Default ConnectionString ```"Server=(localdb)\\mssqllocaldb;Database=SearchDb;Trusted_Connection=True;"``` was used.
 
 In the Google section, you need to specify Url and credentials for search. The following parameters were used for testing: 
 ```
@@ -25,7 +25,7 @@ In the Google section, you need to specify Url and credentials for search. The f
 In the Bing section, you need to specify Url and credentials for search. The following parameters were used for testing:
 ```
     "Url": "https://api.cognitive.microsoft.com/bing/v7.0/search",
-    "Key": "e3a9a702151b4e90a8e3f8d6ba20e00b"
+    "Key": "974d5bd5e47f44029764aca0886206f9"
 ```
   
 In the Yandex section, you need to specify Url and credentials for search. The following parameters were used for testing:
