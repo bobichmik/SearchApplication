@@ -38,7 +38,14 @@ namespace SearchApp.Pages
 
             Message = $"Search term = {searchTerm}";
             DisplayedResults = await result;
-            await _context.SaveResultsAsync(DisplayedResults);
+            SaveNewResultsToDatabase(searchTerm);
+        }
+
+        private void SaveNewResultsToDatabase(string searchTerm)
+        {
+            _context.SearchResults.RemoveRange(_context.SearchResults.Where(x => x.SearchTerm == searchTerm));
+            _context.SearchResults.AddRange(DisplayedResults);
+            _context.SaveChanges();
         }
     }
 }

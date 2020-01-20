@@ -1,6 +1,7 @@
 ﻿using Domain.Core.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SearchApp.Pages
 {
@@ -26,7 +27,7 @@ namespace SearchApp.Pages
         public void OnPostAsync(string searchTerm)
         {
             Message = $"Search term = {searchTerm}";
-            DisplayedResults = _context.ShowResults(searchTerm);
+            DisplayedResults = _context.SearchResults.Where(x => x.SearchTerm == searchTerm).ToList();
         }
     }
 }
