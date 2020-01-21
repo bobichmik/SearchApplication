@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Clients\BingSearchClient\BingSearchClient.csproj" />
     <ProjectReference Include="..\Clients\GoogleSearchClient\GoogleSearchClient.csproj" />
     <ProjectReference Include="..\Clients\YandexSearchClient\YandexSearchClient.csproj" />
+    <ProjectReference Include="..\Repositories\Repositories.csproj" />
   </ItemGroup>
 
 </Project>

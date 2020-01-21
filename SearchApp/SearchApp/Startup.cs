@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using YandexSearchClient.Startup;
+using Repositories.Startup;
 
 namespace SearchApp
 {
@@ -31,6 +32,8 @@ namespace SearchApp
             services.AddGoogleClient(Configuration);
             services.AddYandexClient(Configuration);
             services.AddBingClient(Configuration);
+
+            services.AddRepositories();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

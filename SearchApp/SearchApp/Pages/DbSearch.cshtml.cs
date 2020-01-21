@@ -1,4 +1,5 @@
-﻿using Domain.Core.Models;
+﻿using Domain.Core.Repositories;
+using Domain.Core.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,11 @@ namespace SearchApp.Pages
 
         public List<SearchResultModel> DisplayedResults { get; set; }
 
-        private readonly ApplicationContext _context;
+        private ISearchResultsRepository _repository;
 
-        public DbSearchModel(ApplicationContext context)
+        public DbSearchModel(ISearchResultsRepository repository)
         {
-            _context = context;
+            _repository = repository;
             DisplayedResults = null;
         }
 
@@ -27,7 +28,7 @@ namespace SearchApp.Pages
         public void OnPostAsync(string searchTerm)
         {
             Message = $"Search term = {searchTerm}";
-            DisplayedResults = _context.SearchResults.Where(x => x.SearchTerm == searchTerm).ToList();
+            DisplayedResults = _repository.GetBySearchTerm(searchTerm).ToList();
         }
     }
 }

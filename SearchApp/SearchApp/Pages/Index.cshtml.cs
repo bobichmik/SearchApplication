@@ -1,4 +1,5 @@
 using AutoMapper;
+using Domain.Core.Repositories;
 using Domain.Core.Models;
 using Domain.Core.Searching;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -16,11 +17,11 @@ namespace SearchApp.Pages
 
         private readonly IEnumerable<ISearchClient> _searchClients;
         private readonly IMapper _mapper;
-        private readonly ApplicationContext _context;
+        private readonly ISearchResultsRepository _repository;
 
-        public IndexModel(IEnumerable<ISearchClient> searchClients, ApplicationContext context, IMapper mapper)
+        public IndexModel(IEnumerable<ISearchClient> searchClients, ISearchResultsRepository repository, IMapper mapper)
         {
-            _context = context;
+            _repository = repository;
             _searchClients = searchClients;
             _mapper = mapper;
         }
@@ -43,9 +44,9 @@ namespace SearchApp.Pages
 
         private async Task SaveNewResultsToDatabaseAsync(string searchTerm)
         {
-            _context.SearchResults.RemoveRange(_context.SearchResults.Where(x => x.SearchTerm == searchTerm));
-            _context.SearchResults.AddRange(DisplayedResults);
-            await _context.SaveChangesAsync();
+            var entitiesToDelete = _repository.GetBySearchTerm(searchTerm).ToList();
+            await _repository.DeleteRange(entitiesToDelete);
+            await _repository.AddRange(DisplayedResults);
         }
     }
 }
