@@ -9,7 +9,7 @@ using Xunit;
 
 namespace RazorPagesTests
 {
-    public class IndexPageTests
+    public class RazorPagesTests
     {
         [Fact]
         public async Task OnPostTestAsync()
