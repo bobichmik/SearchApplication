@@ -1,6 +1,5 @@
-using AutoMapper;
-using Domain.Core.Repositories;
 using Domain.Core.Models;
+using Domain.Core.Repositories;
 using Domain.Core.Searching;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
@@ -16,14 +15,12 @@ namespace SearchApp.Pages
         public List<SearchResultModel> DisplayedResults { get; set; }
 
         private readonly IEnumerable<ISearchClient> _searchClients;
-        private readonly IMapper _mapper;
         private readonly ISearchResultsRepository _repository;
 
-        public IndexModel(IEnumerable<ISearchClient> searchClients, ISearchResultsRepository repository, IMapper mapper)
+        public IndexModel(IEnumerable<ISearchClient> searchClients, ISearchResultsRepository repository)
         {
             _repository = repository;
             _searchClients = searchClients;
-            _mapper = mapper;
         }
 
         public void OnGet()
