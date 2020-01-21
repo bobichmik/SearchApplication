@@ -8,7 +8,10 @@ namespace Domain.Core.Models
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            this.Database.Migrate();
+            if (this.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
+            {
+                this.Database.Migrate();
+            }
         }
     }
 }
